@@ -7,7 +7,7 @@ import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.server.network.packet.CustomPayloadC2SPacket;
+import net.minecraft.network.packet.c2s.play.CustomPayloadC2SPacket;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.PacketByteBuf;
 
@@ -23,7 +23,7 @@ public class InventorySortPacket {
                 if (playerInv) {
                     InventoryHelper.sortInv(player.inventory, 9, 27, sortType);
                 } else {
-                    Inventory inv = player.container.getSlot(0).inventory;
+                    Inventory inv = player.currentScreenHandler.getSlot(0).inventory;
                     InventoryHelper.sortInv(inv, 0, inv.getInvSize(), sortType);
                 }
             });
